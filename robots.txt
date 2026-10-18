@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://paperwallet.sumcoinindex.com/sitemap.xml
