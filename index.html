@@ -10421,6 +10421,11 @@ janin.currency = {
     useCurrency: function(index) {
         janin.selectedCurrency = janin.currencies[index];
 
+        // Match Sumcoin Flutter: compressed legacy P2PKH by default.
+        var sumcoinDefault = janin.currency.name().toLowerCase() === "sumcoin";
+        Bitcoin.ECKey.compressByDefault = sumcoinDefault;
+        document.getElementById("bulkcompressed").checked = sumcoinDefault;
+
         var coinImgUrl = "logos/" + janin.currency.name().toLowerCase() + ".png";
         document.getElementById("coinLogoImg").src = coinImgUrl;
 
