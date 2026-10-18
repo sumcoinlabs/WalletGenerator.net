@@ -370,24 +370,37 @@
 	};
 
 	ec.PointFp.decodeFrom = function (curve, enc) {
-		var type = enc[0];
-		var dataLen = enc.length - 1;
+        var compressed = enc && enc.length === 33 &&
+            (enc[0] === 2 || enc[0] === 3);
+        var uncompressed = enc && enc.length === 65 && enc[0] === 4;
 
-		// Extract x and y as byte arrays
-		var xBa = enc.slice(1, 1 + dataLen / 2);
-		var yBa = enc.slice(1 + dataLen / 2, 1 + dataLen);
+        if (!compressed && !uncompressed) {
+            throw new Error("Invalid public key encoding");
+        }
 
-		// Prepend zero byte to prevent interpretation as negative integer
-		xBa.unshift(0);
-		yBa.unshift(0);
+        var hex = "";
+        var digits = "0123456789abcdef";
+        for (var i = 0; i < enc.length; i++) {
+            var b = enc[i];
+            if (!Number.isInteger(b) || b < 0 || b > 255) {
+                throw new Error("Invalid public key byte");
+            }
+            hex += digits[b >>> 4] + digits[b & 15];
+        }
 
-		// Convert to BigIntegers
-		var x = new BigInteger(xBa);
-		var y = new BigInteger(yBa);
-
-		// Return point
-		return new ec.PointFp(curve, curve.fromBigInteger(x), curve.fromBigInteger(y));
-	};
+        var point = curve.decodePointHex(hex);
+        if (!point || point.isInfinity() || !point.isOnCurve()) {
+            throw new Error("Invalid elliptic-curve point");
+        }
+        var x = point.getX().toBigInteger();
+        var y = point.getY().toBigInteger();
+        var prime = curve.getQ();
+        if (x.signum() < 0 || x.compareTo(prime) >= 0 ||
+            y.signum() < 0 || y.compareTo(prime) >= 0) {
+            throw new Error("Public key coordinate out of range");
+        }
+        return point;
+    };
 
 	ec.PointFp.prototype.add2D = function (b) {
 		if (this.isInfinity()) return b;

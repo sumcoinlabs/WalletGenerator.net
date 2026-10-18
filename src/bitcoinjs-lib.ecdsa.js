@@ -33,10 +33,18 @@ Bitcoin.ECDSA = (function () {
 
 	var ECDSA = {
 		getBigRandom: function (limit) {
-			return new BigInteger(limit.bitLength(), rng)
-				.mod(limit.subtract(BigInteger.ONE))
-				.add(BigInteger.ONE);
-		},
+            // Uniformly generate 1 <= candidate < limit.
+            // Reject invalid candidates instead of modulo reduction.
+            if (limit.compareTo(BigInteger.ONE) <= 0) {
+                throw new Error("Invalid random-number limit");
+            }
+            var candidate;
+            do {
+                candidate = new BigInteger(limit.bitLength(), rng);
+            } while (candidate.compareTo(BigInteger.ZERO) === 0 ||
+                     candidate.compareTo(limit) >= 0);
+            return candidate;
+        },
 		sign: function (hash, priv) {
 			var d = priv;
 			var n = ecparams.getN();
@@ -68,7 +76,7 @@ Bitcoin.ECDSA = (function () {
 			}
 
 			var Q;
-			if (pubkey instanceof ec.PointFp) {
+			if (pubkey instanceof EllipticCurve.PointFp) {
 				Q = pubkey;
 			} else if (Bitcoin.Util.isArray(pubkey)) {
 				Q = EllipticCurve.PointFp.decodeFrom(ecparams.getCurve(), pubkey);
