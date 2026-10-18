@@ -16,7 +16,7 @@ for(i = 0; i < janin.currencies.length; i++) {
 }
 // Reset title if no currency is choosen
 if(ninja.getQueryString()["currency"] == null) {
-    document.title = ninja.translator.get("defaultTitle");
+    document.title = "Sumcoin Paper Wallet Generator | Free, Open Source";
     document.getElementById("siteTitle").alt = ninja.translator.get("defaultTitle");
 }
 // populate currency dropdown list

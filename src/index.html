@@ -2,10 +2,122 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for BitCoins and other cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
-  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, bitcoin, litecoin, dogecoin" />
+  <title>Sumcoin Paper Wallet Generator | Free, Open Source</title>
+  <meta name="title" content="Sumcoin Paper Wallet Generator | Free, Open Source">
+  <meta name="description" content="Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Ty Jacobsen">
+  <meta name="application-name" content="Sumcoin Paper Wallet Generator">
+  <link rel="canonical" href="https://paperwallet.sumcoinindex.com/">
+  <link rel="icon" type="image/png" href="/favicon.ico">
 
-  <!--
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sumcoin Paper Wallet Generator">
+  <meta property="og:url" content="https://paperwallet.sumcoinindex.com/">
+  <meta property="og:title" content="Sumcoin Paper Wallet Generator | Free, Open Source">
+  <meta property="og:description" content="Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies.">
+  <meta property="og:image" content="https://paperwallet.sumcoinindex.com/images/overview.png">
+  <meta property="og:image:alt" content="Preview of printable paper wallets">
+
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://paperwallet.sumcoinindex.com/">
+  <meta name="twitter:title" content="Sumcoin Paper Wallet Generator | Free, Open Source">
+  <meta name="twitter:description" content="Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies.">
+  <meta name="twitter:image" content="https://paperwallet.sumcoinindex.com/images/overview.png">
+  <meta name="twitter:image:alt" content="Preview of printable paper wallets">
+
+  <!-- Structured data: no fabricated ratings or reviews -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://paperwallet.sumcoinindex.com/#website",
+      "name": "Sumcoin Paper Wallet Generator",
+      "alternateName": "Sumcoin PaperWallet",
+      "url": "https://paperwallet.sumcoinindex.com/",
+      "description": "Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies."
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://paperwallet.sumcoinindex.com/#webpage",
+      "url": "https://paperwallet.sumcoinindex.com/",
+      "name": "Sumcoin Paper Wallet Generator | Free, Open Source",
+      "description": "Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies.",
+      "isPartOf": {
+        "@id": "https://paperwallet.sumcoinindex.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://paperwallet.sumcoinindex.com/#application"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://paperwallet.sumcoinindex.com/images/overview.png",
+        "caption": "Printable cryptocurrency paper wallet designs"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://paperwallet.sumcoinindex.com/#application",
+      "name": "Sumcoin Paper Wallet Generator",
+      "alternateName": [
+        "Sumcoin Paper Wallet",
+        "Sumcoin Wallet Generator"
+      ],
+      "url": "https://paperwallet.sumcoinindex.com/",
+      "description": "Create free, printable Sumcoin paper wallets in your browser. Generate legacy S addresses and compressed U-format WIF private keys, with support for other cryptocurrencies.",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Cryptocurrency paper wallet generator",
+      "operatingSystem": "Any operating system with a modern browser",
+      "browserRequirements": "JavaScript and Web Crypto API support",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "url": "https://paperwallet.sumcoinindex.com/",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Client-side cryptocurrency wallet generation",
+        "Sumcoin legacy P2PKH S addresses",
+        "Compressed Sumcoin U-format WIF private keys",
+        "Printable paper wallets with QR codes",
+        "Single-wallet and bulk-wallet generation",
+        "Multiple supported cryptocurrencies",
+        "Source code available for offline use"
+      ],
+      "image": "https://paperwallet.sumcoinindex.com/images/overview.png",
+      "isBasedOn": {
+        "@id": "https://github.com/sumcoinlabs/WalletGenerator.net#source"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://paperwallet.sumcoinindex.com/#webpage"
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://github.com/sumcoinlabs/WalletGenerator.net#source",
+      "name": "Sumcoin WalletGenerator.net Source Code",
+      "url": "https://github.com/sumcoinlabs/WalletGenerator.net",
+      "codeRepository": "https://github.com/sumcoinlabs/WalletGenerator.net",
+      "programmingLanguage": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "license": "https://opensource.org/license/mit",
+      "targetProduct": {
+        "@id": "https://paperwallet.sumcoinindex.com/#application"
+      }
+    }
+  ]
+}
+  </script>
+
+<!--
 
 Notice of Copyrights and Licenses:
 ---------------------------------------
@@ -51,7 +163,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   GitHub Repository: https://github.com/MichaelMure/WalletGenerator.net
   -->
 
-  <title>WalletGenerator.net - Universal Paper wallet generator for Bitcoin and other cryptocurrencies</title>
+
 
   <script type="text/javascript">
 //array.map.js
